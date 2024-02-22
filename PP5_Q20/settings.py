@@ -76,6 +76,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'),'8000-annadobrucki-pp5q20-cphxg9s699k.ws-eu108.gitpod.io', 'localhost']
 
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 

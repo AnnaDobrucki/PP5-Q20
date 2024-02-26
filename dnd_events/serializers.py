@@ -53,6 +53,6 @@ class DNDEventSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'event_start',
             'event_end', 'image', 'game_name', 'game_description',
             'is_owner', 'date', 'event_start',
-            'event_end', 'event_location', 'game_master', 'contact'
+            'event_end', 'event_location', 'game_master', 'contact','profile_id','profile_image'
             #'response_count', 'response_id',
         ]

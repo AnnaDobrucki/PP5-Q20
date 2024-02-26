@@ -12,7 +12,7 @@ class DNDEventList(generics.ListCreateAPIView):
     """
     serializer_class = DNDEventSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Follower.objects.all().order_by('-created_at')
+    queryset = DNDEvent.objects.all()order_by('created_at')
     filter_backends = [
         filters.SearchFilter,
         filters.OrderingFilter,
@@ -20,7 +20,7 @@ class DNDEventList(generics.ListCreateAPIView):
     ]
     ordering_fields = [
         #'response_count',
-        #'responses__created_at',
+        'responses__created_at',
         'owner__followed__owner__profile'
     ]
     search_fields = [
@@ -44,4 +44,4 @@ class DNDEventDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = DNDEventSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Follower.objects.all().order_by('created_at')
+    queryset = DNDEvent.objects.all()order_by('created_at')

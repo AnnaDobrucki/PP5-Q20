@@ -19,8 +19,6 @@ class DNDEventList(generics.ListCreateAPIView):
         DjangoFilterBackend
     ]
     ordering_fields = [
-        #'response_count',
-        #'responses__created_at',
         'owner__followed__owner__profile'
     ]
     search_fields = [

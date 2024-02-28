@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import DNDEvent
-# from responses.models import Response
 from datetime import time
 
 class CustomizedTimeField(serializers.TimeField):
@@ -14,8 +13,6 @@ class DNDEventSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     is_owner = serializers.SerializerMethodField()
-    #response_id = serializers.SerializerMethodField()
-    #response_count = serializers.ReadOnlyField()
     event_start = CustomizedTimeField(default=time.min)
     event_end = CustomizedTimeField(default=time.min)
 
@@ -38,21 +35,11 @@ class DNDEventSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-   # def get_response_id(self, obj):
-       # user = self.context['request'].user
-        #if user.is_authenticated:
-           # response = Response.objects.filter(
-           #     owner=user, dndevent=obj
-           # ).first()
-           # return response.id if response else None
-       # return None
-
     class Meta:
         model = DNDEvent
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'event_start',
             'event_end', 'image', 'game_name', 'game_description',
-            'is_owner', 'date', 'event_start',
+            'is_owner', 'date',
             'event_end', 'event_location', 'game_master', 'contact','profile_id','profile_image'
-            #'response_count', 'response_id',
         ]

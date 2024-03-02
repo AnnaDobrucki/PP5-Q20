@@ -10,12 +10,12 @@ class DNDEvent(models.Model):
     game_description = models.TextField(blank=False)  
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    date = models.DateField(default=date.today)
+    date = models.DateField(default=date.today, blank=False)
     game_master = models.CharField(max_length=255, blank=False) 
     event_location = models.TextField(blank=False)
-    event_start = models.TimeField(default=timezone.now)
+    event_start = models.TimeField(default=timezone.now, blank=False)
     event_end = models.TimeField(default=timezone.now)
-    contact = models.EmailField(blank=True)
+    contact = models.EmailField(blank=False)
     image = models.ImageField(upload_to='images/', default='../placeholder', blank=True)
 
     class Meta:

@@ -12,7 +12,7 @@ class DNDEventList(generics.ListCreateAPIView):
     """
     serializer_class = DNDEventSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = DNDEvent.objects.all().order_by('created_at')
+    queryset = DNDEvent.objects.all().order_by('-created_at')
     filter_backends = [
         filters.SearchFilter,
         filters.OrderingFilter,

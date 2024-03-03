@@ -37,16 +37,6 @@ class DNDEventSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_replies_id(self, obj):
-        #Attempting to fetch the reply allocated with user and the event
-        user = self.context['request'].user
-        if user.is_authenticated:
-            replies = Replies.objects.filter(
-                owner=user, dndevent=obj
-            ).first()
-            return replies.id if replies else None
-        return None
-
 
     class Meta:
         model = DNDEvent

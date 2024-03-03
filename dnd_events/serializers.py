@@ -42,7 +42,7 @@ class DNDEventSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             replies = Replies.objects.filter(
-                owner=user, bookclubevent=obj
+                owner=user, dndevents=obj
             ).first()
             return replies.id if replies else None
         return None

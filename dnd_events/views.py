@@ -44,4 +44,6 @@ class DNDEventDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = DNDEventSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = DNDEvent.objects.all().order_by('created_at')
+    queryset = DNDEvent.objects.annotate(
+        response_count=Count('replies', distinct=True),
+    ).order_by('created_at')

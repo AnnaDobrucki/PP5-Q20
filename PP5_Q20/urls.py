@@ -31,5 +31,7 @@ urlpatterns = [
     path('', include('comments.urls')),
     path('', include('likes.urls')),
     path('', include('followers.urls')),
-    path('', include('dnd_events.urls'))
+    path('', include('dnd_events.urls')),
+    path('', include('replies.urls')),
+
 ]

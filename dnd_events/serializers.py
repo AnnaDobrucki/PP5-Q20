@@ -15,6 +15,8 @@ class DNDEventSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     event_start = CustomizedTimeField(default=time.min)
     event_end = CustomizedTimeField(default=time.min)
+    replies_id = serializers.SerializerMethodField()
+    replies_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -35,11 +37,22 @@ class DNDEventSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_replies_id(self, obj):
+        #Attempting to fetch the reply allocated with user and the event
+        user = self.context['request'].user
+        if user.is_authenticated:
+            replies = Replies.objects.filter(
+                owner=user, bookclubevent=obj
+            ).first()
+            return replies.id if replies else None
+        return None
+
+
     class Meta:
         model = DNDEvent
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'event_start',
             'event_end', 'image', 'game_name', 'game_description',
-            'is_owner', 'date',
+            'is_owner', 'date', 'replies_id', 'replies_count',
             'event_end', 'event_location', 'game_master', 'contact','profile_id','profile_image'
         ]

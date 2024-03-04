@@ -34,7 +34,7 @@ class DNDEventModelTests(APITestCase):
     def test_create_dnd_event(self):
         dnd_event_data = {
             'game_name': 'DND Test Game',
-            'game_description': 'DND est Description',
+            'game_description': 'DND test Description',
             'owner': self.user,
         }
         initial_count = DNDEvent.objects.count()
@@ -42,6 +42,6 @@ class DNDEventModelTests(APITestCase):
         dnd_event = DNDEvent.objects.create(**dnd_event_data)
 
         self.assertEqual(DNDEvent.objects.count(), initial_count + 1)
-        self.assertEqual(dnd_event.game_name, 'Test Game')
+        self.assertEqual(dnd_event.game_name, 'DND Test Game')
 
 

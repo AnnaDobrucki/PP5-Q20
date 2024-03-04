@@ -14,7 +14,8 @@ class DNDEventList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = DNDEvent.objects.annotate(
         replies_count=Count('replies', distinct=True),
-    ).order_by('created_at')    filter_backends = [
+    ).order_by('created_at')
+    filter_backends = [
         filters.SearchFilter,
         filters.OrderingFilter,
         DjangoFilterBackend

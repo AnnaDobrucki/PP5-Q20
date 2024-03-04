@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import DNDEvent
 from datetime import time
+from replies.models import Replies
 
 class CustomizedTimeField(serializers.TimeField):
     def to_representation(self, value):
@@ -42,7 +43,7 @@ class DNDEventSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             replies = Replies.objects.filter(
-                owner=user, dndevent=obj
+                owner=user, dnd_event=obj
             ).first()
             return replies.id if replies else None
         return None

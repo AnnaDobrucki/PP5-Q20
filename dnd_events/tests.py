@@ -43,5 +43,3 @@ class DNDEventModelTests(APITestCase):
 
         self.assertEqual(DNDEvent.objects.count(), initial_count + 1)
         self.assertEqual(dnd_event.game_name, 'DND Test Game')
-
-

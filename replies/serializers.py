@@ -11,7 +11,7 @@ class RepliesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Replies
-        fields = ['id', 'created_at', 'owner', 'dnd_event',]
+        fields = ['id', 'created_at', 'owner', 'dnd_event']
 
     def create(self, validated_data):
         try:

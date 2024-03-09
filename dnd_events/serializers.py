@@ -3,11 +3,13 @@ from .models import DNDEvent
 from datetime import time
 from replies.models import Replies
 
+
 class CustomizedTimeField(serializers.TimeField):
     def to_representation(self, value):
         if value is None:
             return None
         return value.strftime('%H:%M:%S')
+
 
 class DNDEventSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -39,7 +41,6 @@ class DNDEventSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_replies_id(self, obj):
-        #Attempting to fetch the reply allocated with user and the event
         user = self.context['request'].user
         if user.is_authenticated:
             replies = Replies.objects.filter(
@@ -48,12 +49,12 @@ class DNDEventSerializer(serializers.ModelSerializer):
             return replies.id if replies else None
         return None
 
-
     class Meta:
         model = DNDEvent
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'event_start',
             'event_end', 'image', 'game_name', 'game_description',
             'is_owner', 'date', 'replies_id', 'replies_count',
-            'event_end', 'event_location', 'game_master', 'contact','profile_id','profile_image'
+            'event_end', 'event_location', 'game_master',
+            'contact', 'profile_id', 'profile_image'
         ]

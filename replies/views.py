@@ -16,4 +16,5 @@ class ReplyListView(generics.ListCreateAPIView):
 class ReplyDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Replies.objects.all()
     serializer_class = RepliesSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly]

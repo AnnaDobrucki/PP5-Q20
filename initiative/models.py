@@ -8,8 +8,7 @@ class DNDInitiative(models.Model):
     """
     name = models.CharField(max_length=255)
     initiative = models.PositiveIntegerField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE,default=None)
-    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return self.name

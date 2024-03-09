@@ -13,7 +13,7 @@ class DNDInitiativeTests(APITestCase):
     def test_create_dnd_initiative(self):
         initiative_data = {
             'name': 'DND Test Initiative',
-            'initiative': 10,  
+            'initiative': 10,
             'owner': self.user,
         }
         initiative = DNDInitiative.objects.create(**initiative_data)

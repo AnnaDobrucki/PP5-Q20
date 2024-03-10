@@ -107,7 +107,7 @@ INSTALLED_APPS = [
     'followers',
     'dnd_events',
     'replies',
-    'initiative'
+    'initiative',
 ]
 
 SITE_ID = 1 
@@ -121,8 +121,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://q20-front-end-69f73c8caa66.herokuapp.com',
+]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)

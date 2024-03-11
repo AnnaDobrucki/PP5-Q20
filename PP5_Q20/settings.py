@@ -115,18 +115,12 @@ SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    'https://q20-front-end-69f73c8caa66.herokuapp.com',
-    'https://3000-annadobruck-q20frontend-kp41jadt9cp.ws-eu108.gitpod.io',
 ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:

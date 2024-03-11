@@ -76,7 +76,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'),'8000-annadobrucki-pp5q20-cphxg9s699k.ws-eu108.gitpod.io', 'localhost']
 
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = 'DEV' in os.environ
 
 # Application definition
 
@@ -154,17 +154,17 @@ WSGI_APPLICATION = 'PP5_Q20.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#if 'DEV' in os.environ:
- #    DATABASES = {
-    #     'default': {
-     #        'ENGINE': 'django.db.backends.sqlite3',
-      #       'NAME': BASE_DIR / 'db.sqlite3',
-       #  }
-    # }
-#else:
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+if 'DEV' in os.environ:
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+else:
+     DATABASES = {
+         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
 
 
 # Password validation

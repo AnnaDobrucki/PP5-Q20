@@ -11,6 +11,7 @@
 
  ## Error resolution and Debugging
  * I had a couple of issues with getting my urls to be set up, I had mutliple spelling errors from my end that meant I had to reset my debug settings to figure out my own errors.
+ * When setting up my front end application I got another CORS value issue. So I installed CORS Headers and implemented the middleware, so the API can start to work again with the Front End app. 
 
 
 ## Validation

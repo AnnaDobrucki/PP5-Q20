@@ -27,7 +27,7 @@
 ### Custom Sections
 
 ### **Dnd Events** 
-* This app for events, was created to link up with my fornt end app, and collect, store and return to origin the data that's created about making DND Events.
+* This app for events, was created to link up with my fornt end app, to collect, store and return to origin the data that's created about making DND Events.
 * This meant I created the ability to know when a user is logged in, order posts due to there created at ID's, and included dates, times, and descriptions (text box input fields) of what was going on in this event.
 
 ### **Replies**

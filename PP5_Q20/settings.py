@@ -126,6 +126,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'https://q20-front-end-69f73c8caa66.herokuapp.com',
+    'https://3000-annadobruck-q20frontend-kp41jadt9cp.ws-eu108.gitpod.io',
 ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
